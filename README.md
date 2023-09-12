@@ -17,5 +17,10 @@ Documentazione: https://ygoprodeck.com/api-guide/
 
 ### Svolgimento:
 
-- inserisco nel progetto anche la tanto amata bootstrap
-- per prova inserisco anche font awesome
+#### inserisco nel progetto anche la tanto amata bootstrap
+
+per inserire bootstrap devo installare con il comando npm che trovo sul sito
+
+- devo importare in main.js il file di mio interesse dalla cartella di bootstrap in node_modules
+
+#### per prova inserisco anche font awesome

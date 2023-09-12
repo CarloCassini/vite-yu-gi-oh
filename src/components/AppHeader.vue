@@ -1,5 +1,7 @@
 <script></script>
 
-<template>WAAAAAAAAAAAAAA</template>
+<template>
+  <div class="debug m-5">WAAAAAAAAAAAAAA</div>
+</template>
 
 <style scoped></style>
