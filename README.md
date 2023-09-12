@@ -24,3 +24,10 @@ per inserire bootstrap devo installare con il comando npm che trovo sul sito
 - devo importare in main.js il file di mio interesse dalla cartella di bootstrap in node_modules
 
 #### per prova inserisco anche font awesome
+
+seguendo i passaggi suggeriti dal sito alla sezione "get started"
+
+- installo il core
+- installo i pacchetti di icone che mi interessano (free, ovvio)
+  -installo i componenti
+  -in main.js comincio a creare la mia libreria
