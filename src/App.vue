@@ -6,6 +6,11 @@ import axios from "axios";
 
 // todo
 export default {
+  data() {
+    return {
+      cards: [],
+    };
+  },
   components: { AppHeader, AppMain },
 
   methods: {
@@ -13,8 +18,15 @@ export default {
       axios
         .get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0")
         .then((response) => {
-          const cardData = response;
-          console.log(cardData);
+          // console.log("vediamo " + response.data.data.name);
+          // const cardsData = response.data.data.map((card) => {
+          //   const { id, name, archetype, card_images } = card;
+          //   return { id, name, archetype, card_images };
+          // });
+          // this.cards = cardsData;
+          this.cards = response.data.data;
+
+          // console.log("ciccio" + this.cards);
         });
     },
     // inserisci i metodi
@@ -28,6 +40,9 @@ export default {
 </script>
 
 <template>
+  <div v-for="(card, index) in cards" :key="card.id">
+    {{ index + 1 }} - {{ card.name }}
+  </div>
   <div class="">
     <AppHeader />
     <AppMain />
