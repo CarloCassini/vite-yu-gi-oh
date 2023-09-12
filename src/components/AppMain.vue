@@ -1,4 +1,13 @@
-<script></script>
+<script>
+import { store } from "../data/store";
+export default {
+  data() {
+    return {
+      store,
+    };
+  },
+};
+</script>
 
 <template>
   <section>
@@ -14,6 +23,12 @@
           <option value="3">Three</option>
         </select>
       </div>
+
+      <div v-for="(card, index) in store.cards">
+        {{ index + 1 }} {{ card.name }} // {{ card.archetype }} //
+        <img :src="card.card_images[0].image_url_small" alt="" />
+        {{ card.card_images[0].image_url_small }}
+      </div>
     </div>
   </section>
 </template>
@@ -22,7 +37,7 @@
 section {
   background-color: #d48f38;
 }
-select-box {
-  width: 10%;
+.select-box {
+  width: 20%;
 }
 </style>
