@@ -3,6 +3,9 @@ import { createApp } from "vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App.vue";
 
+// importo axios
+import axios from "axios";
+
 /* import the fontawesome core */
 import { library } from "@fortawesome/fontawesome-svg-core";
 

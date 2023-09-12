@@ -31,3 +31,10 @@ seguendo i passaggi suggeriti dal sito alla sezione "get started"
 - installo i pacchetti di icone che mi interessano (free, ovvio)
   -installo i componenti
   -in main.js comincio a creare la mia libreria
+
+#### per chiamare una API online devo usare Axios
+
+axios server per leggere le api da dei siti interner e quindi ricavarne i dati che mi servono per la mia applicazione
+
+- sul sito npmjs.com trovo il link per installare axios nel mio progetto (npm i axios)
+- npm install axios
