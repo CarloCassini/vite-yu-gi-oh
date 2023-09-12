@@ -8,10 +8,8 @@ import AppMain from "./components/AppMain.vue";
 </script>
 
 <template>
-  <div class="debug">
-    <AppHeader />
-    <AppMain />
-  </div>
+  <AppHeader />
+  <AppMain />
 </template>
 
 <style lang="scss">
