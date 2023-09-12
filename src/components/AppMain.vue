@@ -12,7 +12,7 @@ export default {
 <template>
   <section>
     <div class="container">
-      <div class="select-box">
+      <div class="select-box py-3">
         <select
           class="form-select form-select-lg mb-3"
           aria-label="Large select example"
@@ -24,10 +24,25 @@ export default {
         </select>
       </div>
 
-      <div v-for="(card, index) in store.cards">
-        {{ index + 1 }} {{ card.name }} // {{ card.archetype }} //
-        <img :src="card.card_images[0].image_url_small" alt="" />
-        {{ card.card_images[0].image_url_small }}
+      <!-- container per le card -->
+      <div class="container">
+        <div class="row row-cols-5 justify-content-between">
+          <div class="col my-2" v-for="(card, index) in store.cards">
+            <div class="card">
+              <img
+                :src="card.card_images[0].image_url_small"
+                class="card-img-top"
+                alt="..."
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ card.name }}</h5>
+                <p class="card-text">
+                  {{ card.archetype }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
