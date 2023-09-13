@@ -1,11 +1,13 @@
 <script>
 import { store } from "../data/store";
+import BaseSelect from "../components/BaseSelect.vue";
 export default {
   data() {
     return {
       store,
     };
   },
+  components: { BaseSelect },
 };
 </script>
 
@@ -13,7 +15,8 @@ export default {
   <section>
     <div class="container bg-brown">
       <div class="select-box py-3">
-        <select
+        <BaseSelect />
+        <!-- <select
           class="form-select form-select-lg mb-3"
           aria-label="Large select example"
         >
@@ -24,7 +27,7 @@ export default {
           >
             {{ archetype.archetype_name }}
           </option>
-        </select>
+        </select> -->
       </div>
     </div>
 
