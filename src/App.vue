@@ -19,9 +19,12 @@ export default {
 
   methods: {
     fetchCard() {
+      store.loading = true;
+
       axios
-        .get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0")
+        .get(store.apiUrl)
         .then((response) => {
+          // questo codice viene esequito se la chiamata all'API rende 200 e va a buon fine
           const cardsData = response.data.data.map((card) => {
             const { id, name, archetype, card_images } = card;
             return {
@@ -32,7 +35,19 @@ export default {
             };
           });
           store.cards = cardsData;
-          // minuto 0:50
+        })
+
+        // viene eseguito a un errore della chiamata
+        .catch((error) => {
+          console.error(error);
+          store.cards = [];
+          store.paginationNext = "";
+          store.paginationPrev = "";
+        })
+
+        // viene eseguito sempre
+        .finally(() => {
+          store.loading = false;
         });
     },
     // inserisci i metodi
