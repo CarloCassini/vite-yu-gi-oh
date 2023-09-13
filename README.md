@@ -38,3 +38,5 @@ axios server per leggere le api da dei siti interner e quindi ricavarne i dati c
 
 - sul sito npmjs.com trovo il link per installare axios nel mio progetto (npm i axios)
 - npm install axios
+
+secondo filmato. dal minut0n 13.00

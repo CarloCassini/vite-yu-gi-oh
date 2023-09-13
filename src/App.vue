@@ -2,6 +2,7 @@
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
 import BaseButton from "./components/BaseButton.vue";
+import BaseSelect from "./components/BaseSelect.vue";
 
 // importo axios
 import axios from "axios";
@@ -20,7 +21,7 @@ export default {
       newStringa: "",
     };
   },
-  components: { AppHeader, AppMain, BaseButton },
+  components: { AppHeader, AppMain, BaseButton, BaseSelect },
 
   methods: {
     changeOffset() {
@@ -30,7 +31,6 @@ export default {
 
     fetchCard(callToApi) {
       store.loading = true;
-
       axios
         .get(callToApi)
         .then((response) => {
@@ -66,7 +66,6 @@ export default {
         .get("https://db.ygoprodeck.com/api/v7/archetypes.php")
         .then((response) => {
           store.archetypes = response.data;
-          console.log(store.archetypes[9].archetype_name);
         })
 
         // viene eseguito a un errore della chiamata
@@ -79,6 +78,17 @@ export default {
         .finally(() => {
           store.loading = false;
         });
+    },
+
+    searchArchetype(type) {
+      if (type) {
+        this.newStringa =
+          "https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=" + type;
+      } else {
+        this.newStringa = store.apiUrl;
+      }
+
+      this.fetchCard(this.newStringa);
     },
 
     Annulla() {
@@ -129,6 +139,7 @@ export default {
       <BaseButton @cliccked-test="goPrev()" nome="indietro" />
       <BaseButton @cliccked-test="goNext()" nome="avanti" />
       <BaseButton @cliccked-test="Annulla()" nome="annulla" />
+      <BaseSelect @cambio-Select="searchArchetype" />
     </div>
     <AppMain />
   </div>

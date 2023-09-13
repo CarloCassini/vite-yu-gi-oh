@@ -14,7 +14,8 @@ export default {
     class="btn btn-primary mx-3"
     @click="$emit('cliccked-test')"
   >
-    {{ nome }}
+    <!-- questa sintassi mi permette di avere un valore di default cliccami se non dovesse arrivare nulla dalle props -->
+    {{ nome || "cliccami" }}
   </button>
 </template>
 

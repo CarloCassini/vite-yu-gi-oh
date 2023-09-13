@@ -1,34 +1,19 @@
 <script>
 import { store } from "../data/store";
-import BaseSelect from "../components/BaseSelect.vue";
+
 export default {
   data() {
     return {
       store,
     };
   },
-  components: { BaseSelect },
 };
 </script>
 
 <template>
   <section>
     <div class="container bg-brown">
-      <div class="select-box py-3">
-        <BaseSelect />
-        <!-- <select
-          class="form-select form-select-lg mb-3"
-          aria-label="Large select example"
-        >
-          <option
-            v-for="(archetype, index) in store.archetypes"
-            :value="index"
-            :key="index"
-          >
-            {{ archetype.archetype_name }}
-          </option>
-        </select> -->
-      </div>
+      <div class="select-box py-3"></div>
     </div>
 
     <div class="container">

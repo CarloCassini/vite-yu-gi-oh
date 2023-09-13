@@ -4,27 +4,53 @@ export default {
   data() {
     return {
       store,
+      term: "",
     };
+  },
+
+  methods: {
+    annullaRicerca() {
+      this.term = "";
+    },
   },
   props: {},
 
-  emits: [],
+  emits: ["cambio-Select"],
 };
 </script>
 
 <template>
-  <select
-    class="form-select form-select-lg mb-3"
-    aria-label="Large select example"
-  >
-    <option
-      v-for="(archetype, index) in store.archetypes"
-      :value="index"
-      :key="index"
+  <div class="bg-brown">
+    <select
+      class="form-select form-select-lg mt-5 mb-3"
+      aria-label="Large select example"
+      v-model="term"
     >
-      {{ archetype.archetype_name }}
-    </option>
-  </select>
+      <option :value="''" @click="$emit('cambio-Select', term)" selected>
+        annulla ricerca
+      </option>
+      <option
+        v-for="(archetype, index) in store.archetypes"
+        :value="archetype.archetype_name"
+        :key="index"
+        @click="$emit('cambio-Select', term)"
+      >
+        {{ archetype.archetype_name }}
+      </option>
+    </select>
+    <button
+      type="button"
+      class="btn btn-primary mx-3 mb-5"
+      @click="$emit('cambio-Select', term)"
+    >
+      <!-- questa sintassi mi permette di avere un valore di default cliccami se non dovesse arrivare nulla dalle props -->
+      {{ nome || "cerca per archertipo" }}
+    </button>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.bg-brown {
+  background-color: burlywood;
+}
+</style>
