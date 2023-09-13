@@ -24,7 +24,12 @@ export default {
         .then((response) => {
           const cardsData = response.data.data.map((card) => {
             const { id, name, archetype, card_images } = card;
-            return { id, name, archetype, card_images };
+            return {
+              id,
+              name,
+              archetype,
+              cardImage: card_images[0].image_url_small,
+            };
           });
           store.cards = cardsData;
           // minuto 0:50

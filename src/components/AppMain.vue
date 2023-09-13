@@ -31,11 +31,7 @@ export default {
         <div class="row row-cols-5 justify-content-between">
           <div class="col my-2" v-for="(card, index) in store.cards">
             <div class="card">
-              <img
-                :src="card.card_images[0].image_url_small"
-                class="card-img-top"
-                alt="..."
-              />
+              <img :src="card.cardImage" class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">{{ card.name }}</h5>
                 <p class="card-text">
