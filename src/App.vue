@@ -62,14 +62,17 @@ export default {
         });
     },
 
+    Annulla() {
+      this.offset = 0;
+      this.changeOffset();
+      this.fetchCard(this.newStringa);
+    },
     goNext() {
-      console.log("vado next");
       this.offset += 20;
       this.changeOffset();
       this.fetchCard(this.newStringa);
     },
     goPrev() {
-      console.log("vado next");
       if (this.offset >= 20) {
         this.offset -= 20;
       }
@@ -91,11 +94,14 @@ export default {
 <template>
   <div class="">
     <!-- apploading è registrata globalmente su main.js -->
+    <button type="button" class="btn btn-primary ms-5" @click="goPrev()">
+      indietro
+    </button>
     <button type="button" class="btn btn-primary ms-5" @click="goNext()">
       avanti
     </button>
-    <button type="button" class="btn btn-primary ms-5" @click="goPrev()">
-      indietro
+    <button type="button" class="btn btn-primary ms-5" @click="Annulla()">
+      annulla
     </button>
     <AppLoading v-if="store.loading == true" />
     <AppHeader />
