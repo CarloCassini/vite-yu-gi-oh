@@ -51,8 +51,28 @@ export default {
         .catch((error) => {
           console.error(error);
           store.cards = [];
-          store.paginationNext = "";
-          store.paginationPrev = "";
+        })
+
+        // viene eseguito sempre
+        .finally(() => {
+          store.loading = false;
+        });
+    },
+
+    getArchetypes() {
+      store.loading = true;
+
+      axios
+        .get("https://db.ygoprodeck.com/api/v7/archetypes.php")
+        .then((response) => {
+          store.archetypes = response.data;
+          console.log(store.archetypes[9].archetype_name);
+        })
+
+        // viene eseguito a un errore della chiamata
+        .catch((error) => {
+          console.error(error);
+          store.archetypes = [];
         })
 
         // viene eseguito sempre
@@ -85,6 +105,7 @@ export default {
     // esegui alla creazione
     this.changeOffset();
     this.fetchCard(this.newStringa);
+    this.getArchetypes();
   },
 };
 </script>
