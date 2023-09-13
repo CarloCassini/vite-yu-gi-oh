@@ -15,6 +15,7 @@
   left: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
 
   display: flex;
   justify-content: center;

@@ -14,16 +14,26 @@ export default {
   data() {
     return {
       store,
+      callToApi: "",
+      offset: 0,
+      newStringa: "",
     };
   },
   components: { AppHeader, AppMain },
 
   methods: {
-    fetchCard() {
+    changeOffset() {
+      this.newStringa = this.callToApi.slice(0, -1);
+      this.newStringa = this.newStringa + this.offset;
+      console.log(this.newStringa);
+    },
+
+    fetchCard(callToApi) {
+      console.log("we" + callToApi);
       store.loading = true;
 
       axios
-        .get(store.apiUrl)
+        .get(callToApi)
         .then((response) => {
           // questo codice viene esequito se la chiamata all'API rende 200 e va a buon fine
           const cardsData = response.data.data.map((card) => {
@@ -51,12 +61,29 @@ export default {
           store.loading = false;
         });
     },
+
+    goNext() {
+      console.log("vado next");
+      this.offset += 20;
+      this.changeOffset();
+      this.fetchCard(this.newStringa);
+    },
+    goPrev() {
+      console.log("vado next");
+      if (this.offset >= 20) {
+        this.offset -= 20;
+      }
+      this.changeOffset();
+      this.fetchCard(this.newStringa);
+    },
     // inserisci i metodi
   },
 
   created() {
     // esegui alla creazione
-    this.fetchCard();
+    this.callToApi = store.apiUrl;
+    this.changeOffset();
+    this.fetchCard(this.newStringa);
   },
 };
 </script>
@@ -64,6 +91,12 @@ export default {
 <template>
   <div class="">
     <!-- apploading è registrata globalmente su main.js -->
+    <button type="button" class="btn btn-primary ms-5" @click="goNext()">
+      avanti
+    </button>
+    <button type="button" class="btn btn-primary ms-5" @click="goPrev()">
+      indietro
+    </button>
     <AppLoading v-if="store.loading == true" />
     <AppHeader />
     <AppMain />

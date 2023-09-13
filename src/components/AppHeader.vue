@@ -16,5 +16,6 @@
 h1 {
   height: 70px;
   line-height: 70px;
+  display: inline-block;
 }
 </style>
