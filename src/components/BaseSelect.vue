@@ -38,6 +38,7 @@ export default {
         {{ archetype.archetype_name }}
       </option>
     </select>
+    <span>totale righe trovate : {{ store.totalFound }}</span>
     <button
       type="button"
       class="btn btn-primary mx-3 mb-5"

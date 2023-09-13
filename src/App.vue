@@ -44,6 +44,9 @@ export default {
               cardImage: card_images[0].image_url_small,
             };
           });
+
+          // store.totalFound = response.data.meta.total_rows;
+          // console.log(store.totalFound);
           store.cards = cardsData;
         })
 
