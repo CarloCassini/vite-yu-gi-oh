@@ -1,6 +1,7 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
+import BaseButton from "./components/BaseButton.vue";
 
 // importo axios
 import axios from "axios";
@@ -14,22 +15,20 @@ export default {
   data() {
     return {
       store,
-      callToApi: "",
+
       offset: 0,
       newStringa: "",
     };
   },
-  components: { AppHeader, AppMain },
+  components: { AppHeader, AppMain, BaseButton },
 
   methods: {
     changeOffset() {
-      this.newStringa = this.callToApi.slice(0, -1);
+      this.newStringa = store.apiUrl.slice(0, -1);
       this.newStringa = this.newStringa + this.offset;
-      console.log(this.newStringa);
     },
 
     fetchCard(callToApi) {
-      console.log("we" + callToApi);
       store.loading = true;
 
       axios
@@ -84,7 +83,6 @@ export default {
 
   created() {
     // esegui alla creazione
-    this.callToApi = store.apiUrl;
     this.changeOffset();
     this.fetchCard(this.newStringa);
   },
@@ -96,7 +94,7 @@ export default {
     <!-- apploading è registrata globalmente su main.js -->
     <AppLoading v-if="store.loading == true" />
 
-    <button type="button" class="btn btn-primary ms-5" @click="goPrev()">
+    <!-- <button type="button" class="btn btn-primary ms-5" @click="goPrev()">
       indietro
     </button>
     <button type="button" class="btn btn-primary ms-5" @click="goNext()">
@@ -104,8 +102,13 @@ export default {
     </button>
     <button type="button" class="btn btn-primary ms-5" @click="Annulla()">
       annulla
-    </button>
-    <AppHeader />
+    </button> -->
+    <div class="container">
+      <AppHeader />
+      <BaseButton @cliccked-test="goPrev()" nome="indietro" />
+      <BaseButton @cliccked-test="goNext()" nome="avanti" />
+      <BaseButton @cliccked-test="Annulla()" nome="annulla" />
+    </div>
     <AppMain />
   </div>
 </template>
