@@ -3,6 +3,8 @@ import { createApp } from "vue";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App.vue";
 
+import AppLoading from "./components/AppLoading.vue";
+
 // importo axios
 import axios from "axios";
 
@@ -27,6 +29,7 @@ library.add(faEnvelope, faPaperPlane);
 
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
+app.component("AppLoading", AppLoading);
 app.mount("#app");
 
 // questa era la sintassi prima di installare fontawesome

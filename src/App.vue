@@ -1,6 +1,7 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
 import AppMain from "./components/AppMain.vue";
+
 // importo axios
 import axios from "axios";
 
@@ -62,6 +63,8 @@ export default {
 
 <template>
   <div class="">
+    <!-- apploading è registrata globalmente su main.js -->
+    <AppLoading v-if="store.loading == true" />
     <AppHeader />
     <AppMain />
   </div>
