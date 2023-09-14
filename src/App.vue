@@ -45,8 +45,8 @@ export default {
             };
           });
 
-          // store.totalFound = response.data.meta.total_rows;
-          // console.log(store.totalFound);
+          store.totalFound = cardsData.length;
+
           store.cards = cardsData;
         })
 
@@ -128,15 +128,6 @@ export default {
     <!-- apploading è registrata globalmente su main.js -->
     <AppLoading v-if="store.loading == true" />
 
-    <!-- <button type="button" class="btn btn-primary ms-5" @click="goPrev()">
-      indietro
-    </button>
-    <button type="button" class="btn btn-primary ms-5" @click="goNext()">
-      avanti
-    </button>
-    <button type="button" class="btn btn-primary ms-5" @click="Annulla()">
-      annulla
-    </button> -->
     <div class="container">
       <AppHeader />
       <BaseButton @cliccked-test="goPrev()" nome="indietro" />
