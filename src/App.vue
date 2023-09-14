@@ -130,10 +130,15 @@ export default {
 
     <div class="container">
       <AppHeader />
-      <BaseButton @cliccked-test="goPrev()" nome="indietro" />
-      <BaseButton @cliccked-test="goNext()" nome="avanti" />
-      <BaseButton @cliccked-test="Annulla()" nome="annulla" />
-      <BaseSelect @cambio-Select="searchArchetype" />
+      <div class="container bg-brown">
+        <BaseButton @cliccked-test="goPrev()" nome="indietro" />
+        <BaseButton @cliccked-test="goNext()" nome="avanti" />
+        <BaseButton @cliccked-test="Annulla()" nome="annulla" />
+        <BaseSelect
+          @cambio-Select="searchArchetype"
+          @annulla-ricerca="Annulla()"
+        />
+      </div>
     </div>
     <AppMain />
   </div>
@@ -141,4 +146,9 @@ export default {
 
 <style lang="scss">
 @use "./assets/styles/general.scss";
+
+.bg-brown {
+  background-color: burlywood;
+  padding: 10px 0;
+}
 </style>

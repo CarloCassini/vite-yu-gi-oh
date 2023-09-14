@@ -15,7 +15,7 @@ export default {
   },
   props: {},
 
-  emits: ["cambio-Select"],
+  emits: ["cambio-Select", "annulla-ricerca"],
 };
 </script>
 
@@ -27,9 +27,7 @@ export default {
       v-model="term"
       @change="$emit('cambio-Select', term)"
     >
-      <option :value="''" @change="$emit('cambio-Select', term)" selected>
-        annulla ricerca
-      </option>
+      <option :value="''" selected>annulla ricerca</option>
       <option
         v-for="(archetype, index) in store.archetypes"
         :value="archetype.archetype_name"
@@ -39,9 +37,13 @@ export default {
       </option>
     </select>
     <span>totale righe trovate : {{ store.totalFound }}</span>
-    <button type="button" class="btn btn-primary mx-3 mb-5">
+    <button
+      type="button"
+      class="btn btn-primary mx-3 mb-5"
+      @click="$emit('annulla-ricerca')"
+    >
       <!-- questa sintassi mi permette di avere un valore di default cliccami se non dovesse arrivare nulla dalle props -->
-      {{ nome || "cerca per archertipo" }}
+      {{ nome || "annulla ricerca" }}
     </button>
   </div>
 </template>
