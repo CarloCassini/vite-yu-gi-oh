@@ -25,25 +25,21 @@ export default {
       class="form-select form-select-lg mt-5 mb-3"
       aria-label="Large select example"
       v-model="term"
+      @change="$emit('cambio-Select', term)"
     >
-      <option :value="''" @click="$emit('cambio-Select', term)" selected>
+      <option :value="''" @change="$emit('cambio-Select', term)" selected>
         annulla ricerca
       </option>
       <option
         v-for="(archetype, index) in store.archetypes"
         :value="archetype.archetype_name"
         :key="index"
-        @click="$emit('cambio-Select', term)"
       >
         {{ archetype.archetype_name }}
       </option>
     </select>
     <span>totale righe trovate : {{ store.totalFound }}</span>
-    <button
-      type="button"
-      class="btn btn-primary mx-3 mb-5"
-      @click="$emit('cambio-Select', term)"
-    >
+    <button type="button" class="btn btn-primary mx-3 mb-5">
       <!-- questa sintassi mi permette di avere un valore di default cliccami se non dovesse arrivare nulla dalle props -->
       {{ nome || "cerca per archertipo" }}
     </button>
