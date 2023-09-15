@@ -20,9 +20,9 @@ export default {
 </script>
 
 <template>
-  <div class="bg-brown">
+  <div class="select-zone">
     <select
-      class="form-select form-select-lg mt-5 mb-3"
+      class="form-select form-select-lg mt-5 mb-3 select-bar"
       aria-label="Large select example"
       v-model="term"
       @change="$emit('cambio-Select', term)"
@@ -36,7 +36,6 @@ export default {
         {{ archetype.archetype_name }}
       </option>
     </select>
-    <span>totale righe trovate : {{ store.totalFound }}</span>
     <button
       type="button"
       class="btn btn-primary mx-3 mb-5"
@@ -46,10 +45,24 @@ export default {
       {{ nome || "annulla ricerca" }}
     </button>
   </div>
+  <div class="bg-black">
+    <span>totale righe trovate : {{ store.totalFound }}</span>
+  </div>
 </template>
 
 <style scoped>
-.bg-brown {
-  background-color: burlywood;
+.select-zone {
+  width: 30%;
+
+  .select-bar {
+    display: inline-block;
+  }
+}
+.bg-black {
+  background-color: black;
+  color: white;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
 }
 </style>
